@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import React, { useState, useEffect } from 'react';
-import Modal from '../src/Modal';
 
 function Home() {
     const [show, setShow] = useState(false);
