@@ -1,8 +1,11 @@
 {
-  "name": "redis-view",
+  "name": "redis-web-client",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev:docker:rebuild": "docker-compose build --no-cache",
+    "dev:docker": "docker-compose up",
+    "dev:docker:down": "docker-compose down --remove-orphans",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -11,10 +14,14 @@
   "dependencies": {
     "next": "12.1.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "redis": "^4.0.4"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.4",
     "eslint": "8.11.0",
-    "eslint-config-next": "12.1.0"
+    "eslint-config-next": "12.1.0",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.0.23"
   }
 }

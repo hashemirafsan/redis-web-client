@@ -1,0 +1,32 @@
+version: '3.1'
+services:
+  redis-view-app:
+    build:
+      context: .
+    env_file:
+      - ./.env
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - ${PORT}:${PORT}
+      - 49153:49153
+    restart: unless-stopped
+    depends_on:
+      - redis-view-store
+    healthcheck:
+      test: ['CMD', 'nc', '-z', 'localhost', '3000']
+      interval: 20s
+      timeout: 5s
+      retries: 3
+    command: npm run dev
+
+  redis-view-store: # Redis
+    image: redis
+    restart: unless-stopped
+    logging:
+      driver: none
+    healthcheck:
+      test: ['CMD', 'nc', '-z', 'localhost', '6379']
+      interval: 20s
+      timeout: 5s
+      retries: 3
