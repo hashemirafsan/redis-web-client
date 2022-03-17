@@ -1,18 +1,21 @@
 version: '3.1'
 services:
   redis-view-app:
-    build:
-      context: .
+    # build:
+    #   context: .
+    image: redis-web-client
     env_file:
       - ./.env
-    volumes:
-      - .:/usr/src/app
+    # volumes:
+    #   - .:/usr/src/app
     ports:
-      - ${PORT}:${PORT}
+      - ${PORT}:8085
       - 49153:49153
     restart: unless-stopped
     depends_on:
       - redis-view-store
+    environment:
+      REDIS_URL: redis://redis-view-store:6379
     healthcheck:
       test: ['CMD', 'nc', '-z', 'localhost', '3000']
       interval: 20s

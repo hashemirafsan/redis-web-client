@@ -5,3 +5,9 @@ COPY package*.json ./
 
 RUN npm install
 COPY . .
+
+ARG REDIS_URL
+
+EXPOSE 8085
+
+CMD [ "npm", "run", "dev" ]

@@ -2,7 +2,7 @@
 import { createClient } from 'redis';
 
 export default async function handler(req, res) {
-  const client = createClient({ url: 'redis://redis-view-store:6379' });
+  const client = createClient({ url: process.env.REDIS_URL ?? 'redis://localhost:6379' });
   await client.connect();
   await client.set('')
   const keys = await client.keys('*');

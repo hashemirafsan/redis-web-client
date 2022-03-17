@@ -6,7 +6,7 @@
     "dev:docker:rebuild": "docker-compose build --no-cache",
     "dev:docker": "docker-compose up",
     "dev:docker:down": "docker-compose down --remove-orphans",
-    "dev": "next dev",
+    "dev": "next dev -p 8085",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
